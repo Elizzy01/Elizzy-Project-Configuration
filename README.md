@@ -4,4 +4,25 @@ The sole aim of this project to build the infrastructure in AWS. Here we will bu
 
 
 `Cost, Security, and Scalability are the major requirements for this project. Hence, implementing the architecture designed below;`
-![Architecture diagram]()
+
+## Project Architecture Diagram
+
+![Architecture diagram](/images/AWScloudup-Architecture.PNG)
+
+## Project Kick-off
+
+Properly configure your AWS account and Organization Unit. [Watch How To Do This Here](https://youtu.be/9PQYCc_20-Q)
+
+- Create an AWS Master account. (Also known as Root Account)
+
+- Within the Root account, create a sub-account and name it DevOps. (You will need another email address to complete this)
+
+- Within the Root account, create an AWS Organization Unit (OU). Name it Dev. (We will launch Dev resources in there) Move the DevOps account into the Dev OU.
+
+- Login to the newly created AWS account using the new email address.
+
+- Create a free domain name for your fictitious company at Freenom or any other domain registrar such as namecheap or godaddy.
+
+- Create a hosted zone in AWS, and map it to your free domain from Freenom. [Watch how to do that here](https://youtu.be/IjcHp94Hq8A)
+
+## Infrastructure Set-up
