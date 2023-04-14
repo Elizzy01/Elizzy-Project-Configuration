@@ -27,10 +27,11 @@ Properly configure your AWS account and Organization Unit. [Watch How To Do This
 
 ## Infrastructure Set-up
 1. Create a VPC
-[VPC Image](/images/AWSCloudup-VPC.PNG)
+![VPC Image](/images/AWSCloudup-VPC.PNG)
+
 2. Create subnets as shown in the architecture
   - Two public subnets and 4 Private subnets with the associated IPs
- [Subnets](/images/AWScloudup-subnets.PNG)
+![Subnets](/images/AWScloudup-subnets.PNG)
 Create a route table and associate it with public subnets
 Create a route table and associate it with private subnets
 Create an Internet Gateway
