@@ -4,3 +4,4 @@ The sole aim of this project to build the infrastructure in AWS. Here we will bu
 
 
 `Cost, Security, and Scalability are the major requirements for this project. Hence, implementing the architecture designed below;`
+![Architecture diagram]()
