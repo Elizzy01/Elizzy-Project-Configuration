@@ -34,9 +34,14 @@ Properly configure your AWS account and Organization Unit. [Watch How To Do This
  
 ![Subnets](/images/AWScloudup-subnets.PNG)
 
-Create a route table and associate it with public subnets
-Create a route table and associate it with private subnets
-Create an Internet Gateway
-Edit a route in public route table, and associate it with the Internet Gateway. (This is what allows a public subnet to be accisble from the Internet)
-Create 3 Elastic IPs
-Create a Nat Gateway and assign one of the Elastic IPs (*The other 2 will be used by Bastion hosts)
+3. Create a route table and associate the public subnets to one then do likewise by associating all private subnets to a single route table as well. 
+![Routetables](/images/AWScloudup-Routetables.PNG)
+
+4. Create an Internet Gateway
+![InternetGateway](/images/AWScloudup-IGW.PNG)
+ 
+5. Edit a route in public route table, and associate it with the Internet Gateway. (This is what allows a public subnet to be accisble from the Internet)
+
+6. **Create 3 Elastic IPs** - Create a Nat Gateway and assign one of the Elastic IPs (*The other 2 will be used by Bastion hosts)
+![](/images/AWScloudup-elasticIP.PNG)
+
