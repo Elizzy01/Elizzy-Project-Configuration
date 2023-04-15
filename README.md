@@ -75,9 +75,17 @@ You will need TLS certificates to handle secured connectivity to your Applicatio
 - Tag the resource
 - Bind the ACM to the route53 hosted zone created earlier
 
+![](/images/AWSCloudup%20-%20ACM.png)
+
 ### Setup EFS
 Amazon Elastic File System (Amazon EFS) provides a simple, scalable, fully managed elastic Network File System (NFS) for use with AWS Cloud services and on-premises resources. In this project, we will utulize EFS service and mount filesystems on both Nginx and Webservers to store data.
 
-Create an EFS filesystem
-Create an EFS mount target per AZ in the VPC, associate it with both subnets dedicated for data layer
-Associate the Security groups created earlier for data layer. Create an EFS access point. (Give it a name and leave all other settings as default)
+- Create an EFS filesystem
+- Create an EFS mount target per AZ in the VPC, associate it with both subnets dedicated for data layer
+- Associate the Security groups created earlier for data layer. Create an EFS access point. (Give it a name and leave all other settings as default)
+
+![](/images/AWScloudup%20-%20EFS.png)
+
+On the EFS setup, create two access points for both **tooling** and **wordpress** applications
+
+![](/images/AWSCloudup%20-%20accesspoint.png)
