@@ -45,3 +45,39 @@ Properly configure your AWS account and Organization Unit. [Watch How To Do This
 6. **Create 3 Elastic IPs** - Create a Nat Gateway and assign one of the Elastic IPs (*The other 2 will be used by Bastion hosts)
 ![](/images/AWScloudup-elasticIP.PNG)
 
+7. Create a Security Group for:
+- **Nginx Servers**: Access to Nginx should only be allowed from a Application Load balancer (ALB). At this point, we have not created a load balancer, therefore we will update the rules later. For now, just create it and put some dummy records as a place holder.
+
+- **Bastion Servers**: Access to the Bastion servers should be allowed only from workstations that need to SSH into the bastion servers. Hence, you can use your workstation public IP address. To get this information, simply go to your terminal and type curl www.canhazip.com
+
+- **Application Load Balancer**: ALB will be available from the Internet Webservers: Access to Webservers should only be allowed from the Nginx servers. Since we do not have the servers created yet, just put some dummy records as a place holder, we will update it later.
+
+- **Data Layer**: Access to the Data layer, which is comprised of Amazon Relational Database Service (RDS) and Amazon Elastic File System (EFS) must be carefully desinged only webservers should be able to connect to RDS, while Nginx and Webservers will have access to EFS Mountpoint.
+
+![](/images/AWScloudup-%20securityg.png)
+
+## Proceed With Compute Resources
+You will need to set up and configure compute resources inside your VPC. The recources related to compute are:
+
+- EC2 Instances
+- Launch Templates
+- Target Groups
+- Autoscaling Groups
+- TLS Certificates
+- Application Load Balancers (ALB)
+
+### TLS Certificates From Amazon Certificate Manager (ACM)
+You will need TLS certificates to handle secured connectivity to your Application Load Balancers (ALB).
+
+### Navigate to AWS ACM
+- Request a public wildcard certificate for the domain name you registered in Freenom
+- Use DNS to validate the domain name
+- Tag the resource
+- Bind the ACM to the route53 hosted zone created earlier
+
+### Setup EFS
+Amazon Elastic File System (Amazon EFS) provides a simple, scalable, fully managed elastic Network File System (NFS) for use with AWS Cloud services and on-premises resources. In this project, we will utulize EFS service and mount filesystems on both Nginx and Webservers to store data.
+
+Create an EFS filesystem
+Create an EFS mount target per AZ in the VPC, associate it with both subnets dedicated for data layer
+Associate the Security groups created earlier for data layer. Create an EFS access point. (Give it a name and leave all other settings as default)
