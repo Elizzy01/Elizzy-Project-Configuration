@@ -119,6 +119,22 @@ To configure RDS, follow steps below:
 ![](/images/AWSCloudup%20-%20RDS.png)
 
 ## Creating AMIs for Launch Templates
+
+- To create Launch templates and target groups later on, we will need to setup AMI containing configurations to be done on this respective servers.
+
+![](/images/AWSCloudup%20-%20AMI.png)
+
+- Prepare Launch Template For Nginx,tooling, WebServers and Bastion (One Per Subnet)
+
+- Make use of the AMI to set up a launch template
+
+- Ensure the Instances are launched into their respective subnet; The bastion and Nginx template should be in the public subnets and then tooling and webservers be on the private subnet
+
+- Assign appropriate security group
+
+- Configure Userdata to update yum package repository and install nginx
+
+- Configure Target Groups
 ## Configurations for this servers can be found on this repository
 ## CONFIGURE APPLICATION LOAD BALANCER (ALB)
 ## Creating Databases for Wordpress and Tooling Sites on MySQL RDS
