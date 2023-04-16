@@ -159,6 +159,7 @@ To configure RDS, follow steps below:
 - Select both public subnets
 
 - Enable Application Load Balancer for the AutoScalingGroup (ASG)
+![](/images/AWSCloudup%20-%20lbprep.png)
 
 - Select the target group you created before
 
@@ -174,6 +175,40 @@ Set scale out if CPU utilization reaches 90% Ensure there is an SNS topic to sen
 
 
 ## CONFIGURE APPLICATION LOAD BALANCER (ALB)
+Application Load Balancer To Route Traffic To NGINX Nginx EC2 Instances will have configurations that accepts incoming traffic only from Load Balancers. No request should go directly to Nginx servers. With this kind of setup, we will benefit from intelligent routing of requests from the ALB to Nginx servers across the 2 Availability Zones. We will also be able to offload SSL/TLS certificates on the ALB instead of Nginx. Therefore, Nginx will be able to perform faster since it will not require extra compute resources to valifate certificates for every request.
 
+### Create an Internet facing ALB
+1. Ensure that it listens on HTTPS protocol (TCP port 443)
+
+2. Ensure the ALB is created within the appropriate VPC | AZ | Subnets
+
+3. Choose the Certificate from ACM
+
+4. Select Security Group
+
+5. Select Nginx Instances as the target group
+
+6. Application Load Balancer To Route Traffic To Web Servers
+
+Since the webservers are configured for auto-scaling, there is going to be a problem if servers get dynamically scalled out or in. Nginx will not know about the new IP addresses, or the ones that get removed. Hence, Nginx will not know where to direct the traffic.
+
+To solve this problem, we must use a load balancer. But this time, it will be an internal load balancer. Not Internet facing since the webservers are within a private subnet, and we do not want direct access to them.
+
+### Create an Internal ALB
+1. Ensure that it listens on HTTPS protocol (TCP port 443)
+
+2. Ensure the ALB is created within the appropriate VPC | AZ | Subnets
+
+3. Choose the Certificate from ACM
+
+4. Select Security Group
+
+5. Select webserver Instances as the target group
+
+6. Ensure that health check passes for the target group
+
+![](/images/AWSCloudup%20-%20LB.png)
 
 ## Creating Databases for Wordpress and Tooling Sites on MySQL RDS
+
+
