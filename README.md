@@ -133,8 +133,47 @@ To configure RDS, follow steps below:
 - Assign appropriate security group
 
 - Configure Userdata to update yum package repository and install nginx
+`Configurations for this servers can be found on this repository`
 
 - Configure Target Groups
-## Configurations for this servers can be found on this repository
+
+![](/images/AWSCloudup-targetgroup.png)
+
+
+- Select Instances as the target type
+
+- Ensure the protocol HTTPS on secure TLS port 443
+
+- Ensure that the health check path is /healthstatus
+
+- Register Nginx Instances as targets
+
+- Ensure that health check passes for the target group
+
+### Configure Autoscaling For Nginx
+
+- Select the right launch template
+
+- Select the VPC
+
+- Select both public subnets
+
+- Enable Application Load Balancer for the AutoScalingGroup (ASG)
+
+- Select the target group you created before
+
+- Ensure that you have health checks for both EC2 and ALB
+
+The desired capacity is 2
+
+Minimum capacity is 2
+
+Maximum capacity is 4
+
+Set scale out if CPU utilization reaches 90% Ensure there is an SNS topic to send scaling notifications
+
+
 ## CONFIGURE APPLICATION LOAD BALANCER (ALB)
+
+
 ## Creating Databases for Wordpress and Tooling Sites on MySQL RDS
