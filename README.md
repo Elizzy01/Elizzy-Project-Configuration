@@ -235,8 +235,9 @@ Create other records such as CNAME, alias and A records.
 
 ![](/images/AWSCloudup%20-%20records.png)
   
-**Congratulations!**
+## Congratulations!
  
 ![](/images/AWSCloup-finale.png)
 
+**N.B: Note the site is no longer live, I can't maintain the cost charged by AWS on RDS and the instances. But the concept of reverse proxy was well set-up and done successful.**
 
