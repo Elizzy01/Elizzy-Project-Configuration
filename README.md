@@ -209,6 +209,34 @@ To solve this problem, we must use a load balancer. But this time, it will be an
 
 ![](/images/AWSCloudup%20-%20LB.png)
 
+**NOTE:** This process must be repeated for both WordPress and Tooling websites.
+
+- Route traffic coming from the nginx server into the internal loadbalancer by sending traffic to the respective target group based on the url being requested by the user.
+
 ## Creating Databases for Wordpress and Tooling Sites on MySQL RDS
+
+- Login into the MySQL RDS from the bastion server
+
+- Create databases
+
+![](/images/Cloudup%20databases.png)
+
+## Adding URL EndPoints to Route53 for Wordpress and Tooling Access
+
+**Earlier in this project you registered a free domain with Freenom and configured a hosted zone in Route53. But that is not all that needs to be done as far as DNS configuration is concerned.**
+
+You need to ensure that the main domain for the WordPress website can be reached, and the subdomain for Tooling website can also be reached using a browser.
+Create other records such as CNAME, alias and A records.
+
+**NOTE:** You can use either CNAME or alias records to achieve the same thing. But alias record has better functionality because it is a faster to resolve DNS record, and can coexist with other records on that name. Read here to get to know more about the differences.
+
+- Create an alias record for the root domain and direct its traffic to the ALB DNS name.
+- Create an alias record for tooling.<yourdomain>.com and direct its traffic to the ALB DNS name.
+
+![](/images/AWSCloudup%20-%20records.png)
+  
+**Congratulations!**
+ 
+![](/images/AWSCloup-finale.png)
 
 
